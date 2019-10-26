@@ -4,11 +4,11 @@
 var friends = require("../data/friends");
 
 module.exports = function(app) {
-    app.get("/api/friends", function(req, res){
+    app.get("survey/api/friends", function(req, res){
         res.json(friends);
     });
 
-    app.post("/api/friends", function(req, res) {
+    app.post("/survey/api/friends", function(req, res) {
         console.log(req.body.scores);
         let user = req.body;
         for (let i = 0; i < user.scores.length; i++) {
@@ -25,7 +25,7 @@ module.exports = function(app) {
             }
             
             if (total < minScore) {
-                friendScore = i;
+                friendScore = [i];
                 minScore = total;
             }
         }

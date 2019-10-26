@@ -138,7 +138,7 @@
 
             </div>
 
-            <div class="form-group">
+            <div class="question-10">
                 <label for="question-10">Do you like money?</label>
                 <select class="form-control" id="question-10">
                     <option value="1">1</option>
@@ -154,17 +154,17 @@
             <button id="submit-button" class="btn-secondary" type="submit">Submit</button>
         </div>
 
-
+        
 
     </div>
 
-
-
-    <footer>
+    
         <div class="container">
+            <div id="name">
+                <img id = "photo">
+            </div>
             <a href="/api/friends"></a>
         </div>
-    </footer>
 
 </body>
 
@@ -173,9 +173,7 @@
 <script type="text/javascript">
     $("#submit-button").on("click", function (event) {
         event.preventDefault();
-        let valid = true;
-
-        if (valid === true) {
+        let currentURL = window.location.origin;     
             let newUser = {
                 name: $("#friend-name").val().trim(),
 
@@ -193,20 +191,16 @@
                 ]
             };
 
-            let currentURL = window.location.origin;
-            console.log(newUser);
-           console.log(window.location.origin);
-        $.post(currentURL + "/api/friends", function (data) {
-                $(`<div>${"#modal"}</div>`).append("toggle");    
-                $("#best-friend").text(data.name);
-                $("#best-friend-photo").attr("src", data.photo);
-                
-            });
             
-        } 
+            console.log(newUser);
+            console.log(window.location.origin);
         
-        else {
-            alert("Survey is incomplete!");
-        }
+            
+        {
+            alert("lets find your match!");
+        } ;
+        $.post("survey/api/friends", function (data) {
+                alert("your best match is:" + "");
+            });
     });
 </script>
